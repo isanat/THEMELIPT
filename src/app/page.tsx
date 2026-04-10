@@ -1933,7 +1933,7 @@ function SecurityScore() {
 
   return (
     <AnimatedSection>
-      <div ref={ref} className="max-w-md mx-auto mt-16">
+      <div ref={ref} className="max-w-4xl mx-auto mt-16">
         <Card className="gradient-border-neon bg-charcoal-light/80 backdrop-blur-xl overflow-hidden">
           <CardContent className="p-8 flex flex-col items-center">
             {/* Circular progress */}
@@ -3776,7 +3776,7 @@ export default function Home() {
       <section id="tools" className="relative py-20 sm:py-28 px-4">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
 
-        <div className="max-w-md mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           {/* Section Header */}
           <div className="text-center mb-10">
             <Badge variant="outline" className="border-ember/30 text-ember mb-4 px-4 py-1.5 text-sm">
@@ -3816,7 +3816,7 @@ export default function Home() {
           TRANSACTION FEED WIDGET
           ============================================================== */}
       <section className="relative py-12 sm:py-16 px-4">
-        <div className="max-w-md mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           <TransactionFeed />
         </div>
       </section>
@@ -3829,7 +3829,7 @@ export default function Home() {
       <section id="faq" className="relative py-20 sm:py-28 px-4 bg-charcoal-gradient">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent" />
 
-        <div className="max-w-3xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12">
             <Badge variant="outline" className="border-neon/30 text-neon mb-4 px-4 py-1.5 text-sm">
@@ -3892,7 +3892,7 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-ember/8 rounded-full blur-[150px]" />
         </div>
 
-        <div className="max-w-3xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           {/* Section Header */}
           <div className="text-center mb-10">
             <Badge variant="outline" className="border-ember/30 text-ember mb-4 px-4 py-1.5 text-sm">
@@ -3984,7 +3984,7 @@ export default function Home() {
       <footer className="relative bg-charcoal border-t border-charcoal-lighter">
         {/* Manifesto Section with enhanced styling */}
         <section className="py-16 sm:py-20 px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="relative mb-8">
               <div className="absolute inset-0 bg-ember/10 rounded-full blur-[60px]" />
               <LiptLogo className="w-12 h-12 mx-auto relative" />
