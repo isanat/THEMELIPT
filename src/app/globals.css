@@ -1,0 +1,3756 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* LIPT Brand Colors */
+  --color-ember: #FF4D00;
+  --color-ember-light: #FF6A2B;
+  --color-ember-dark: #CC3D00;
+  --color-charcoal: #1A1A1B;
+  --color-charcoal-light: #2A2A2C;
+  --color-charcoal-lighter: #333335;
+  --color-neon: #8247E5;
+  --color-neon-light: #9B6EF5;
+  --color-neon-dark: #6A35C0;
+  --color-ash: #F8F9FA;
+  --color-ash-muted: #9CA3AF;
+}
+
+:root {
+  --background: #1A1A1B;
+  --foreground: #F8F9FA;
+  --card: #222224;
+  --card-foreground: #F8F9FA;
+  --popover: #222224;
+  --popover-foreground: #F8F9FA;
+  --primary: #FF4D00;
+  --primary-foreground: #F8F9FA;
+  --secondary: #2A2A2C;
+  --secondary-foreground: #F8F9FA;
+  --muted: #2A2A2C;
+  --muted-foreground: #9CA3AF;
+  --accent: #2A2A2C;
+  --accent-foreground: #F8F9FA;
+  --destructive: #FF4D00;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #FF4D00;
+  --chart-1: #FF4D00;
+  --chart-2: #8247E5;
+  --chart-3: #FF6A2B;
+  --chart-4: #9B6EF5;
+  --chart-5: #CC3D00;
+  --radius: 0.75rem;
+  --sidebar: #1A1A1B;
+  --sidebar-foreground: #F8F9FA;
+  --sidebar-primary: #FF4D00;
+  --sidebar-primary-foreground: #F8F9FA;
+  --sidebar-accent: #2A2A2C;
+  --sidebar-accent-foreground: #F8F9FA;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #FF4D00;
+}
+
+.dark {
+  --background: #1A1A1B;
+  --foreground: #F8F9FA;
+  --card: #222224;
+  --card-foreground: #F8F9FA;
+  --popover: #222224;
+  --popover-foreground: #F8F9FA;
+  --primary: #FF4D00;
+  --primary-foreground: #F8F9FA;
+  --secondary: #2A2A2C;
+  --secondary-foreground: #F8F9FA;
+  --muted: #2A2A2C;
+  --muted-foreground: #9CA3AF;
+  --accent: #2A2A2C;
+  --accent-foreground: #F8F9FA;
+  --destructive: #FF4D00;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #FF4D00;
+  --chart-1: #FF4D00;
+  --chart-2: #8247E5;
+  --chart-3: #FF6A2B;
+  --chart-4: #9B6EF5;
+  --chart-5: #CC3D00;
+  --sidebar: #1A1A1B;
+  --sidebar-foreground: #F8F9FA;
+  --sidebar-primary: #FF4D00;
+  --sidebar-primary-foreground: #F8F9FA;
+  --sidebar-accent: #2A2A2C;
+  --sidebar-accent-foreground: #F8F9FA;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #FF4D00;
+}
+
+/* ========================================
+   LIPT PROTOCOL - FIRE THEME ANIMATIONS
+   ======================================== */
+
+@keyframes ember-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 77, 0, 0.3), 0 0 60px rgba(255, 77, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 77, 0, 0.5), 0 0 100px rgba(255, 77, 0, 0.2);
+  }
+}
+
+@keyframes text-ember-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 77, 0, 0.4), 0 0 40px rgba(255, 77, 0, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 77, 0, 0.6), 0 0 60px rgba(255, 77, 0, 0.2);
+  }
+}
+
+@keyframes pulse-ember {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fire-particle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0);
+  }
+}
+
+@keyframes ember-flicker {
+  0%, 100% { opacity: 0.4; }
+  25% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+  75% { opacity: 0.9; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up-fade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(255, 77, 0, 0.3);
+  }
+  50% {
+    border-color: rgba(255, 77, 0, 0.7);
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR (DARK + EMBER)
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333335;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF4D00;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333335 #1A1A1B;
+}
+
+/* ========================================
+   GLASSMORPHISM UTILITIES
+   ======================================== */
+
+.glass-dark {
+  background: rgba(26, 26, 27, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-ember {
+  background: rgba(255, 77, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 77, 0, 0.15);
+}
+
+.glass-neon {
+  background: rgba(130, 71, 229, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(130, 71, 229, 0.15);
+}
+
+/* ========================================
+   FIRE GRADIENT BACKGROUNDS
+   ======================================== */
+
+.bg-fire-gradient {
+  background: linear-gradient(135deg, #1A1A1B 0%, #2D1A0E 40%, #1A1A1B 70%, #1A0D05 100%);
+}
+
+.bg-ember-gradient {
+  background: linear-gradient(135deg, #FF4D00 0%, #FF6A2B 50%, #CC3D00 100%);
+}
+
+.bg-charcoal-gradient {
+  background: linear-gradient(180deg, #1A1A1B 0%, #222224 50%, #1A1A1B 100%);
+}
+
+.bg-hero-gradient {
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 77, 0, 0.15) 0%, rgba(130, 71, 229, 0.05) 40%, transparent 70%),
+              radial-gradient(ellipse at 80% 50%, rgba(255, 77, 0, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 80%, rgba(130, 71, 229, 0.06) 0%, transparent 50%),
+              #1A1A1B;
+}
+
+.bg-fire-particles {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 77, 0, 0.6), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 106, 43, 0.4), transparent),
+    radial-gradient(2px 2px at 50px 160px, rgba(255, 77, 0, 0.5), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(130, 71, 229, 0.3), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 77, 0, 0.4), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 106, 43, 0.5), transparent),
+    radial-gradient(3px 3px at 200px 120px, rgba(255, 77, 0, 0.3), transparent),
+    radial-gradient(2px 2px at 250px 60px, rgba(130, 71, 229, 0.4), transparent),
+    radial-gradient(2px 2px at 300px 140px, rgba(255, 77, 0, 0.5), transparent);
+  background-size: 350px 200px;
+  animation: ember-flicker 4s ease-in-out infinite;
+}
+
+/* ========================================
+   GRADIENT BORDER CARD EFFECT
+   ======================================== */
+
+.gradient-border-ember {
+  position: relative;
+  border: none;
+  background: transparent;
+}
+
+.gradient-border-ember::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #FF4D00, #8247E5, #FF4D00);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.gradient-border-neon {
+  position: relative;
+  border: none;
+  background: transparent;
+}
+
+.gradient-border-neon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #8247E5, #FF4D00, #8247E5);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* ========================================
+   ANIMATION UTILITY CLASSES
+   ======================================== */
+
+.animate-ember-glow {
+  animation: ember-glow 3s ease-in-out infinite;
+}
+
+.animate-text-ember-glow {
+  animation: text-ember-glow 3s ease-in-out infinite;
+}
+
+.animate-pulse-ember {
+  animation: pulse-ember 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.animate-fire-particle {
+  animation: fire-particle-rise 3s ease-out infinite;
+}
+
+.animate-ember-flicker {
+  animation: ember-flicker 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.6s ease-out both;
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* Stagger delay utilities */
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-800 { animation-delay: 800ms; }
+.animation-delay-1000 { animation-delay: 1000ms; }
+
+/* ========================================
+   BASE LAYER OVERRIDES
+   ======================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-charcoal text-ash;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ========================================
+   FIRE PARTICLES BACKGROUND
+   ======================================== */
+
+.fire-particles-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.fire-particles-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(255, 77, 0, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(130, 71, 229, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(255, 77, 0, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================================
+   SHIMMER LOADING EFFECT
+   ======================================== */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,77,0,0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* ========================================
+   PULSING GLOW EFFECT
+   ======================================== */
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,77,0,0.3), 0 0 60px rgba(255,77,0,0.1); }
+  50% { box-shadow: 0 0 40px rgba(255,77,0,0.5), 0 0 100px rgba(255,77,0,0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ========================================
+   FADE IN UP ANIMATION
+   ======================================== */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* ========================================
+   GLOWING TEXT EFFECTS
+   ======================================== */
+
+.text-glow-ember {
+  text-shadow: 0 0 10px rgba(255,77,0,0.5), 0 0 30px rgba(255,77,0,0.2);
+}
+
+.text-glow-neon {
+  text-shadow: 0 0 10px rgba(130,71,229,0.5), 0 0 30px rgba(130,71,229,0.2);
+}
+
+/* ========================================
+   ENHANCED CARD HOVER EFFECTS
+   ======================================== */
+
+.card-hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+.card-hover-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,77,0,0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.card-hover-glow:hover::before {
+  opacity: 1;
+}
+.card-hover-neon::before {
+  background: radial-gradient(circle, rgba(130,71,229,0.06) 0%, transparent 70%);
+}
+
+/* ========================================
+   CARD BUTTON SLIDE-IN ON HOVER
+   ======================================== */
+
+.card-btn-slide {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.group:hover .card-btn-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ========================================
+   ICON GLOW ON CARD HOVER
+   ======================================== */
+
+.icon-glow-ember {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.group:hover .icon-glow-ember {
+  box-shadow: 0 0 20px rgba(255,77,0,0.4), 0 0 40px rgba(255,77,0,0.15);
+}
+.icon-glow-neon {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.group:hover .icon-glow-neon {
+  box-shadow: 0 0 20px rgba(130,71,229,0.4), 0 0 40px rgba(130,71,229,0.15);
+}
+
+/* ========================================
+   ANIMATED MESH GRADIENT BACKGROUND
+   ======================================== */
+
+@keyframes mesh-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+.bg-mesh-gradient {
+  background:
+    radial-gradient(at 20% 20%, rgba(255,77,0,0.15) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(130,71,229,0.1) 0%, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(255,77,0,0.08) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh-gradient 15s ease infinite;
+}
+
+/* ========================================
+   NOISE OVERLAY EFFECT
+   ======================================== */
+
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   DOT GRID PATTERN BACKGROUND
+   ======================================== */
+
+.dot-grid-pattern {
+  background-image: radial-gradient(circle, rgba(255,77,0,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   ANIMATED STRIPE PROGRESS BARS
+   ======================================== */
+
+.progress-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255,255,255,0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripe 1s linear infinite;
+}
+
+@keyframes progress-stripe {
+  0% { background-position: 1rem 0; }
+  100% { background-position: 0 0; }
+}
+
+/* ========================================
+   TYPING CURSOR ANIMATION
+   ======================================== */
+
+@keyframes typing-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: #FF4D00;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: typing-cursor 1s step-end infinite;
+  border-radius: 1px;
+}
+
+/* ========================================
+   TEXT REVEAL EFFECT
+   ======================================== */
+
+@keyframes text-reveal {
+  0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+  100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.text-reveal {
+  animation: text-reveal 0.8s ease-out forwards;
+}
+
+/* ========================================
+   GLOWING BORDER PULSE FOR CARDS
+   ======================================== */
+
+@keyframes border-pulse-ember {
+  0%, 100% { border-color: rgba(255,77,0,0.2); }
+  50% { border-color: rgba(255,77,0,0.6); }
+}
+
+@keyframes border-pulse-neon {
+  0%, 100% { border-color: rgba(130,71,229,0.2); }
+  50% { border-color: rgba(130,71,229,0.6); }
+}
+
+.card-glow-border-ember:hover {
+  border-color: rgba(255,77,0,0.5);
+  box-shadow: 0 0 20px rgba(255,77,0,0.15), inset 0 0 20px rgba(255,77,0,0.05);
+  transition: all 0.4s ease;
+}
+
+.card-glow-border-neon:hover {
+  border-color: rgba(130,71,229,0.5);
+  box-shadow: 0 0 20px rgba(130,71,229,0.15), inset 0 0 20px rgba(130,71,229,0.05);
+  transition: all 0.4s ease;
+}
+
+/* ========================================
+   LIVE INDICATOR
+   ======================================== */
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+/* ========================================
+   WALLET CARD HOVER EFFECT
+   ======================================== */
+
+.wallet-option {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.wallet-option::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,77,0,0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.wallet-option:hover::before {
+  opacity: 1;
+}
+
+.wallet-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,77,0,0.4) !important;
+}
+
+/* ========================================
+   SUBTLE FLOAT ANIMATION VARIANTS
+   ======================================== */
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 4s ease-in-out infinite;
+}
+
+/* ========================================
+   ENHANCED SCROLLBAR ACTIVE STATE
+   ======================================== */
+
+::-webkit-scrollbar-thumb:active {
+  background: #FF6A2B;
+}
+
+/* ========================================
+   SECTION DIVIDER GLOW
+   ======================================== */
+
+.section-divider-glow {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,77,0,0.3), rgba(130,71,229,0.3), transparent);
+}
+
+.section-divider-glow::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  background: rgba(255,77,0,0.3);
+  border-radius: 999px;
+  filter: blur(3px);
+}
+
+/* ========================================
+   PAGE LOADING OVERLAY
+   ======================================== */
+
+@keyframes loading-ember {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF4D00, #8247E5, #FF4D00);
+  z-index: 9999;
+  animation: loading-ember 1.5s ease-in-out forwards;
+}
+
+/* ========================================
+   ANIMATED GRADIENT DIVIDERS
+   ======================================== */
+
+@keyframes divider-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.divider-animated {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,77,0,0.15) 20%,
+    rgba(130,71,229,0.15) 50%,
+    rgba(255,77,0,0.15) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: divider-shimmer 4s linear infinite;
+}
+
+/* ========================================
+   RIPPLE EFFECT ON CLICK
+   ======================================== */
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,77,0,0.2) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: none;
+  pointer-events: none;
+}
+
+.ripple-container:active::after {
+  animation: ripple-expand 0.6s ease-out;
+}
+
+/* ========================================
+   CARD 3D HOVER EFFECT
+   ======================================== */
+
+.card-3d-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d-hover:hover {
+  transform: translateY(-4px) rotateX(1deg);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.3),
+    0 0 30px rgba(255,77,0,0.08);
+}
+
+/* ========================================
+   NEWSLETTER INPUT GLOW
+   ======================================== */
+
+.newsletter-input-glow {
+  transition: all 0.3s ease;
+}
+
+.newsletter-input-glow:focus {
+  box-shadow:
+    0 0 0 2px rgba(255,77,0,0.3),
+    0 0 20px rgba(255,77,0,0.1),
+    inset 0 0 10px rgba(255,77,0,0.05);
+}
+
+/* ========================================
+   COOKIE BANNER ANIMATION
+   ======================================== */
+
+@keyframes slide-up-banner {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up-banner {
+  animation: slide-up-banner 0.5s ease-out forwards;
+}
+
+/* ========================================
+   PROGRESS BAR GLOW EFFECT
+   ======================================== */
+
+.progress-glow {
+  position: relative;
+  overflow: visible;
+}
+
+.progress-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+  border-radius: inherit;
+  filter: blur(2px);
+}
+
+.progress-glow.ember::after {
+  background: linear-gradient(90deg, transparent, rgba(255,77,0,0.4));
+}
+
+.progress-glow.neon::after {
+  background: linear-gradient(90deg, transparent, rgba(130,71,229,0.4));
+}
+
+/* ========================================
+   FLOATING BADGE PULSE
+   ======================================== */
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.badge-float {
+  animation: badge-float 3s ease-in-out infinite;
+}
+
+/* ========================================
+   SECTION TITLE UNDERLINE ANIMATION
+   ======================================== */
+
+.section-title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF4D00, #8247E5);
+  border-radius: 2px;
+  transition: width 0.6s ease-out;
+}
+
+.section-title-underline:hover::after,
+.section-title-underline.visible::after {
+  width: 100%;
+}
+
+/* ========================================
+   SMOOTH SCROLL OFFSET FOR NAV
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* ========================================
+   STEP CARD HOVER GLOW
+   ======================================== */
+
+.step-card-hover-glow {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.step-card-hover-glow:hover {
+  box-shadow: 0 0 30px rgba(255,77,0,0.15), 0 0 60px rgba(130,71,229,0.08);
+  border-color: rgba(255,77,0,0.2);
+}
+
+/* ========================================
+   1. ANIMATED ROTATING GRADIENT BORDER
+   ======================================== */
+
+@keyframes gradient-border-spin {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-gradient-border {
+  position: relative;
+  border-radius: inherit;
+  isolation: isolate;
+}
+
+.animated-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--gradient-angle, 0deg),
+    #FF4D00 0%,
+    #FF6A2B 15%,
+    #8247E5 35%,
+    #9B6EF5 50%,
+    #8247E5 65%,
+    #FF6A2B 85%,
+    #FF4D00 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  z-index: -1;
+  animation: gradient-border-spin 4s linear infinite;
+}
+
+/* Fallback for browsers without @property support */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .animated-gradient-border::before {
+    background: linear-gradient(135deg, #FF4D00, #8247E5, #FF4D00, #8247E5);
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+  }
+}
+
+/* ========================================
+   2. GLASS CARD HOVER LIFT
+   ======================================== */
+
+.glass-card-hover {
+  background: rgba(34, 34, 36, 0.6);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
+  will-change: transform;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 77, 0, 0.08);
+  border-color: rgba(255, 77, 0, 0.15);
+}
+
+.glass-card-hover:active {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Neon variant */
+.glass-card-hover.neon:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(130, 71, 229, 0.12);
+  border-color: rgba(130, 71, 229, 0.2);
+}
+
+/* ========================================
+   3. TEXT GRADIENT UTILITIES
+   ======================================== */
+
+.text-gradient-ember {
+  background: linear-gradient(135deg, #FF4D00 0%, #FF6A2B 40%, #FFB088 70%, #FF6A2B 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.text-gradient-neon {
+  background: linear-gradient(135deg, #8247E5 0%, #9B6EF5 40%, #C4A8FF 70%, #9B6EF5 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* ========================================
+   4. SHIMMER LOADING EFFECT
+   ======================================== */
+
+@keyframes shimmer-highlight {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+  background: rgba(34, 34, 36, 0.5);
+  border-radius: 0.5rem;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 77, 0, 0.04) 20%,
+    rgba(255, 77, 0, 0.1) 50%,
+    rgba(255, 77, 0, 0.04) 80%,
+    transparent 100%
+  );
+  background-size: 800px 100%;
+  animation: shimmer-highlight 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Neon shimmer variant */
+.shimmer-effect.neon::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(130, 71, 229, 0.04) 20%,
+    rgba(130, 71, 229, 0.1) 50%,
+    rgba(130, 71, 229, 0.04) 80%,
+    transparent 100%
+  );
+  background-size: 800px 100%;
+}
+
+/* ========================================
+   5. GRAIN / NOISE TEXTURE OVERLAY
+   ======================================== */
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: overlay;
+}
+
+/* Intense grain variant for hero sections */
+.grain-overlay.intense::before {
+  opacity: 0.05;
+}
+
+/* ========================================
+   6. GLOW TEXT EFFECTS (ENHANCED)
+   ======================================== */
+
+.glow-text-ember {
+  color: #FF4D00;
+  text-shadow:
+    0 0 7px rgba(255, 77, 0, 0.6),
+    0 0 20px rgba(255, 77, 0, 0.35),
+    0 0 42px rgba(255, 77, 0, 0.2),
+    0 0 80px rgba(255, 77, 0, 0.1);
+}
+
+.glow-text-neon {
+  color: #9B6EF5;
+  text-shadow:
+    0 0 7px rgba(130, 71, 229, 0.6),
+    0 0 20px rgba(130, 71, 229, 0.35),
+    0 0 42px rgba(130, 71, 229, 0.2),
+    0 0 80px rgba(130, 71, 229, 0.1);
+}
+
+/* Animated glow variant */
+@keyframes glow-text-breathe {
+  0%, 100% {
+    text-shadow:
+      0 0 7px rgba(255, 77, 0, 0.4),
+      0 0 20px rgba(255, 77, 0, 0.2),
+      0 0 42px rgba(255, 77, 0, 0.1);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(255, 77, 0, 0.7),
+      0 0 30px rgba(255, 77, 0, 0.4),
+      0 0 60px rgba(255, 77, 0, 0.25),
+      0 0 100px rgba(255, 77, 0, 0.1);
+  }
+}
+
+.glow-text-ember.animated {
+  animation: glow-text-breathe 3s ease-in-out infinite;
+}
+
+@keyframes glow-neon-breathe {
+  0%, 100% {
+    text-shadow:
+      0 0 7px rgba(130, 71, 229, 0.4),
+      0 0 20px rgba(130, 71, 229, 0.2),
+      0 0 42px rgba(130, 71, 229, 0.1);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(130, 71, 229, 0.7),
+      0 0 30px rgba(130, 71, 229, 0.4),
+      0 0 60px rgba(130, 71, 229, 0.25),
+      0 0 100px rgba(130, 71, 229, 0.1);
+  }
+}
+
+.glow-text-neon.animated {
+  animation: glow-neon-breathe 3s ease-in-out infinite;
+}
+
+/* ========================================
+   7. CARD TILT PERSPECTIVE WRAPPER
+   ======================================== */
+
+.card-perspective {
+  perspective: 1200px;
+  perspective-origin: center;
+}
+
+.card-perspective > * {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-perspective:hover > * {
+  transform: rotateX(2deg) rotateY(-2deg) translateZ(10px);
+}
+
+/* Stronger tilt variant */
+.card-perspective.tilt-strong:hover > * {
+  transform: rotateX(4deg) rotateY(-4deg) translateZ(20px);
+}
+
+/* Mouse-follow tilt (works with JS mousemove for precise control) */
+.card-perspective[data-tilt="active"] > * {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(8px);
+  transition: transform 0.15s ease-out;
+}
+
+.card-perspective[data-tilt="active"]:not(:hover) > * {
+  transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ========================================
+   8. SCROLL PROGRESS INDICATOR
+   ======================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+}
+
+.scroll-progress::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: var(--scroll-width, 0%);
+  background: linear-gradient(90deg, #FF4D00 0%, #FF6A2B 30%, #8247E5 70%, #9B6EF5 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(255, 77, 0, 0.5), 0 0 20px rgba(255, 77, 0, 0.2);
+  transition: width 0.1s linear;
+}
+
+/* Neon variant */
+.scroll-progress.neon::before {
+  background: linear-gradient(90deg, #8247E5 0%, #9B6EF5 30%, #FF4D00 70%, #FF6A2B 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 8px rgba(130, 71, 229, 0.5), 0 0 20px rgba(130, 71, 229, 0.2);
+}
+
+/* Usage: Set width from JS via progressEl.style.setProperty('--scroll-width', `${percent}%`); */
+
+/* ========================================
+   9. PULSE RING ANIMATION
+   ======================================== */
+
+@keyframes pulse-ring-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  80%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring::before,
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid #FF4D00;
+  animation: pulse-ring-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+.pulse-ring::after {
+  animation-delay: 0.6s;
+}
+
+/* Neon variant */
+.pulse-ring.neon::before,
+.pulse-ring.neon::after {
+  border-color: #8247E5;
+}
+
+/* Green variant for live indicators */
+.pulse-ring.green::before,
+.pulse-ring.green::after {
+  border-color: #22c55e;
+}
+
+/* Single ring variant */
+.pulse-ring.single::after {
+  display: none;
+}
+
+/* ========================================
+   10. ENHANCED SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 26, 27, 0.8);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #333335 0%, #2A2A2C 100%);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF4D00 0%, #CC3D00 100%);
+  background-clip: padding-box;
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 6px rgba(255, 77, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #FF6A2B 0%, #FF4D00 100%);
+  background-clip: padding-box;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(255, 77, 0, 0.5);
+}
+
+/* Firefox enhanced scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333335 rgba(26, 26, 27, 0.8);
+}
+
+/* Hide scrollbar utility (for custom scroll implementations) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   11. STAGGERED FADE-IN CHILDREN
+   ======================================== */
+
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.stagger-children.visible > *:nth-child(1)  { transition-delay: 0ms; }
+.stagger-children.visible > *:nth-child(2)  { transition-delay: 80ms; }
+.stagger-children.visible > *:nth-child(3)  { transition-delay: 160ms; }
+.stagger-children.visible > *:nth-child(4)  { transition-delay: 240ms; }
+.stagger-children.visible > *:nth-child(5)  { transition-delay: 320ms; }
+.stagger-children.visible > *:nth-child(6)  { transition-delay: 400ms; }
+.stagger-children.visible > *:nth-child(7)  { transition-delay: 480ms; }
+.stagger-children.visible > *:nth-child(8)  { transition-delay: 560ms; }
+.stagger-children.visible > *:nth-child(9)  { transition-delay: 640ms; }
+.stagger-children.visible > *:nth-child(10) { transition-delay: 720ms; }
+
+.stagger-children.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Faster stagger variant */
+.stagger-children.fast.visible > *:nth-child(1)  { transition-delay: 0ms; }
+.stagger-children.fast.visible > *:nth-child(2)  { transition-delay: 50ms; }
+.stagger-children.fast.visible > *:nth-child(3)  { transition-delay: 100ms; }
+.stagger-children.fast.visible > *:nth-child(4)  { transition-delay: 150ms; }
+.stagger-children.fast.visible > *:nth-child(5)  { transition-delay: 200ms; }
+.stagger-children.fast.visible > *:nth-child(6)  { transition-delay: 250ms; }
+.stagger-children.fast.visible > *:nth-child(7)  { transition-delay: 300ms; }
+.stagger-children.fast.visible > *:nth-child(8)  { transition-delay: 350ms; }
+.stagger-children.fast.visible > *:nth-child(9)  { transition-delay: 400ms; }
+.stagger-children.fast.visible > *:nth-child(10) { transition-delay: 450ms; }
+
+/* Scale-up stagger variant */
+.stagger-children.scale > * {
+  transform: translateY(20px) scale(0.95);
+}
+
+.stagger-children.scale.visible > * {
+  transform: translateY(0) scale(1);
+}
+
+/* ========================================
+   12. FIRE GRADIENT TEXT
+   ======================================== */
+
+.fire-text {
+  background: linear-gradient(
+    135deg,
+    #FF4D00 0%,
+    #FF6A2B 15%,
+    #FFB347 30%,
+    #FFD700 45%,
+    #FFB347 55%,
+    #FF6A2B 70%,
+    #FF4D00 85%,
+    #CC3D00 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* Fire text with glow underlay */
+.fire-text-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.fire-text-glow::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #FF4D00 0%,
+    #FF6A2B 15%,
+    #FFB347 30%,
+    #FFD700 45%,
+    #FFB347 55%,
+    #FF6A2B 70%,
+    #FF4D00 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+  filter: blur(16px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.fire-text-glow span {
+  background: linear-gradient(
+    135deg,
+    #FF4D00 0%,
+    #FF6A2B 15%,
+    #FFB347 30%,
+    #FFD700 45%,
+    #FFB347 55%,
+    #FF6A2B 70%,
+    #FF4D00 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+  position: relative;
+}
+
+/* Animated fire flicker for headings */
+@keyframes fire-flicker-text {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  25% {
+    background-position: 100% 25%;
+    filter: brightness(1.1);
+  }
+  50% {
+    background-position: 80% 50%;
+    filter: brightness(0.95);
+  }
+  75% {
+    background-position: 20% 75%;
+    filter: brightness(1.05);
+  }
+}
+
+.fire-text.flicker {
+  animation: fire-flicker-text 3s ease-in-out infinite;
+}
+
+/* ========================================
+   ROUND 6 - ENHANCED CSS UTILITIES
+   ======================================== */
+
+/* ========================================
+   1. EMBER UNDERLINE - Animated slide-in underline on hover
+   ======================================== */
+
+.ember-underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.ember-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-ember, #FF4D00), var(--color-neon, #8247E5));
+  border-radius: 1px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: width;
+}
+
+.ember-underline:hover::after {
+  width: 100%;
+}
+
+/* Thicker variant for headings */
+.ember-underline.thick::after {
+  height: 3px;
+  bottom: -4px;
+}
+
+/* Always-visible variant (ignore hover, full width) */
+.ember-underline.always::after {
+  width: 100%;
+}
+
+/* ========================================
+   2. FLOATING ORB - Soft blurred gradient decoration
+   ======================================== */
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.4;
+  will-change: transform;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Size variants */
+.floating-orb.sm {
+  width: 200px;
+  height: 200px;
+  filter: blur(50px);
+  opacity: 0.3;
+}
+
+.floating-orb.md {
+  width: 400px;
+  height: 400px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.floating-orb.lg {
+  width: 600px;
+  height: 600px;
+  filter: blur(100px);
+  opacity: 0.25;
+}
+
+/* Color variants */
+.floating-orb.ember {
+  background: radial-gradient(circle, rgba(255, 77, 0, 0.6) 0%, rgba(255, 77, 0, 0) 70%);
+}
+
+.floating-orb.neon {
+  background: radial-gradient(circle, rgba(130, 71, 229, 0.5) 0%, rgba(130, 71, 229, 0) 70%);
+  animation-delay: 1s;
+}
+
+.floating-orb.mixed {
+  background: radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, rgba(130, 71, 229, 0.3) 40%, transparent 70%);
+  animation-delay: 2s;
+}
+
+/* ========================================
+   3. CARD SPOTLIGHT - Mouse-follow spotlight effect
+   Uses CSS custom properties --mouse-x and --mouse-y set from JS
+   ======================================== */
+
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 77, 0, 0.1) 0%,
+    rgba(130, 71, 229, 0.04) 25%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Neon-focused spotlight variant */
+.card-spotlight.neon::before {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(130, 71, 229, 0.12) 0%,
+    rgba(255, 77, 0, 0.04) 25%,
+    transparent 60%
+  );
+}
+
+/* Brighter intensity variant */
+.card-spotlight.bright::before {
+  background: radial-gradient(
+    500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 77, 0, 0.18) 0%,
+    rgba(130, 71, 229, 0.06) 20%,
+    transparent 50%
+  );
+}
+
+/*
+  JS Usage:
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  });
+*/
+
+/* ========================================
+   4. TEXT STROKE EMBER - Outline text effect
+   ======================================== */
+
+/* Filled variant: ember-stroked text with visible fill */
+.text-stroke-ember.filled {
+  -webkit-text-stroke: 1.5px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: var(--color-ember, #FF4D00);
+  paint-order: stroke fill;
+}
+
+/* Unfilled (outline-only) variant: transparent fill, visible ember stroke */
+.text-stroke-ember.unfilled {
+  -webkit-text-stroke: 1.5px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: transparent;
+}
+
+/* Thin stroke variant */
+.text-stroke-ember.thin.filled {
+  -webkit-text-stroke: 1px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: var(--color-ember, #FF4D00);
+}
+
+.text-stroke-ember.thin.unfilled {
+  -webkit-text-stroke: 1px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: transparent;
+}
+
+/* Heavy stroke variant for bold display text */
+.text-stroke-ember.heavy.filled {
+  -webkit-text-stroke: 2.5px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: var(--color-ember, #FF4D00);
+}
+
+.text-stroke-ember.heavy.unfilled {
+  -webkit-text-stroke: 2.5px var(--color-ember, #FF4D00);
+  -webkit-text-fill-color: transparent;
+}
+
+/* Neon stroke variant */
+.text-stroke-neon.filled {
+  -webkit-text-stroke: 1.5px var(--color-neon, #8247E5);
+  -webkit-text-fill-color: var(--color-neon, #8247E5);
+  paint-order: stroke fill;
+}
+
+.text-stroke-neon.unfilled {
+  -webkit-text-stroke: 1.5px var(--color-neon, #8247E5);
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   5. MARQUEE GRADIENT MASK - Fade-out edges for marquee
+   ======================================== */
+
+.marquee-gradient-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Wider fade variant for a more dramatic edge effect */
+.marquee-gradient-mask.wide {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+/* Subtle fade variant for softer edges */
+.marquee-gradient-mask.subtle {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+/* Vertical fade variant for top/bottom marquees */
+.marquee-gradient-mask.vertical {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   6. BORDER GRADIENT - Gradient border using border-image
+   ======================================== */
+
+/* Horizontal gradient border (left to right) */
+.border-gradient.horizontal {
+  border-image: linear-gradient(
+    90deg,
+    var(--color-ember, #FF4D00) 0%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-ember, #FF4D00) 100%
+  ) 1;
+}
+
+/* Vertical gradient border (top to bottom) */
+.border-gradient.vertical {
+  border-image: linear-gradient(
+    180deg,
+    var(--color-ember, #FF4D00) 0%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-ember, #FF4D00) 100%
+  ) 1;
+}
+
+/* Diagonal gradient border */
+.border-gradient.diagonal {
+  border-image: linear-gradient(
+    135deg,
+    var(--color-ember, #FF4D00) 0%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-ember, #FF4D00) 100%
+  ) 1;
+}
+
+/* Ember-only gradient border */
+.border-gradient.ember-only {
+  border-image: linear-gradient(
+    90deg,
+    var(--color-ember-dark, #CC3D00) 0%,
+    var(--color-ember, #FF4D00) 50%,
+    var(--color-ember-dark, #CC3D00) 100%
+  ) 1;
+}
+
+/* Neon-only gradient border */
+.border-gradient.neon-only {
+  border-image: linear-gradient(
+    90deg,
+    var(--color-neon-dark, #6A35C0) 0%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-neon-dark, #6A35C0) 100%
+  ) 1;
+}
+
+/* ========================================
+   7. MAGNETIC BUTTON - Enhanced hover with scale, glow, rotation, shadow
+   ======================================== */
+
+.magnetic-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+
+.magnetic-button:hover {
+  transform: scale(1.05) rotate(-0.5deg);
+  box-shadow:
+    0 0 20px rgba(255, 77, 0, 0.3),
+    0 0 60px rgba(255, 77, 0, 0.1),
+    0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.magnetic-button:active {
+  transform: scale(0.98) rotate(0deg);
+  box-shadow:
+    0 0 10px rgba(255, 77, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+  transition-duration: 0.15s;
+}
+
+/* Neon variant */
+.magnetic-button.neon:hover {
+  transform: scale(1.05) rotate(0.5deg);
+  box-shadow:
+    0 0 20px rgba(130, 71, 229, 0.3),
+    0 0 60px rgba(130, 71, 229, 0.1),
+    0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Subtle variant with less aggressive effects */
+.magnetic-button.subtle:hover {
+  transform: scale(1.02) rotate(0deg);
+  box-shadow:
+    0 0 12px rgba(255, 77, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   8. GLASS INPUT - Glassmorphism input with ember focus
+   ======================================== */
+
+.glass-input {
+  background: rgba(26, 26, 27, 0.5);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  color: var(--color-ash, #F8F9FA);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+  will-change: border-color, box-shadow;
+}
+
+.glass-input::placeholder {
+  color: var(--color-ash-muted, #9CA3AF);
+  opacity: 0.7;
+}
+
+.glass-input:focus {
+  border-color: var(--color-ember, #FF4D00);
+  background: rgba(26, 26, 27, 0.7);
+  box-shadow:
+    0 0 0 3px rgba(255, 77, 0, 0.15),
+    0 0 20px rgba(255, 77, 0, 0.08),
+    inset 0 0 8px rgba(255, 77, 0, 0.03);
+}
+
+/* Neon focus variant */
+.glass-input.neon:focus {
+  border-color: var(--color-neon, #8247E5);
+  box-shadow:
+    0 0 0 3px rgba(130, 71, 229, 0.15),
+    0 0 20px rgba(130, 71, 229, 0.08),
+    inset 0 0 8px rgba(130, 71, 229, 0.03);
+}
+
+/* Error state */
+.glass-input.error {
+  border-color: #ef4444;
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.15),
+    0 0 12px rgba(239, 68, 68, 0.06);
+}
+
+/* Disabled state */
+.glass-input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================
+   9. BADGE PULSE - Status badge with pulsing dot
+   ======================================== */
+
+.badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: rgba(34, 34, 36, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--color-ash, #F8F9FA);
+}
+
+/* Pulsing dot indicator */
+.badge-pulse::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: badge-pulse-dot 2s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+@keyframes badge-pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(34, 197, 94, 0.3);
+  }
+}
+
+/* Ember-colored dot variant */
+.badge-pulse.ember::before {
+  background: var(--color-ember, #FF4D00);
+  box-shadow: 0 0 6px rgba(255, 77, 0, 0.5);
+  animation-name: badge-pulse-dot-ember;
+}
+
+@keyframes badge-pulse-dot-ember {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 77, 0, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(255, 77, 0, 0.3);
+  }
+}
+
+/* Neon-colored dot variant */
+.badge-pulse.neon::before {
+  background: var(--color-neon, #8247E5);
+  box-shadow: 0 0 6px rgba(130, 71, 229, 0.5);
+  animation-name: badge-pulse-dot-neon;
+}
+
+@keyframes badge-pulse-dot-neon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(130, 71, 229, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(130, 71, 229, 0.3);
+  }
+}
+
+/* Warning/amber dot variant */
+.badge-pulse.warning::before {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+  animation-name: badge-pulse-dot-warning;
+}
+
+@keyframes badge-pulse-dot-warning {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(245, 158, 11, 0.3);
+  }
+}
+
+/* Soft glow background for emphasis */
+.badge-pulse.glow {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.15);
+}
+
+.badge-pulse.glow.ember {
+  background: rgba(255, 77, 0, 0.08);
+  border-color: rgba(255, 77, 0, 0.15);
+}
+
+.badge-pulse.glow.neon {
+  background: rgba(130, 71, 229, 0.08);
+  border-color: rgba(130, 71, 229, 0.15);
+}
+
+/* ========================================
+   10. SECTION REVEAL LINE - Horizontal line animates from center outward
+   Activated by adding .visible class (use IntersectionObserver)
+   ======================================== */
+
+.section-reveal-line {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.section-reveal-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-ember, #FF4D00) 15%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-ember, #FF4D00) 85%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: width;
+}
+
+/* Activated state — add via IntersectionObserver */
+.section-reveal-line.visible::after {
+  width: 100%;
+}
+
+/* Ember-only gradient variant */
+.section-reveal-line.ember-only::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-ember-dark, #CC3D00) 15%,
+    var(--color-ember, #FF4D00) 50%,
+    var(--color-ember-dark, #CC3D00) 85%,
+    transparent 100%
+  );
+}
+
+/* Neon-only gradient variant */
+.section-reveal-line.neon-only::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-neon-dark, #6A35C0) 15%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-neon-dark, #6A35C0) 85%,
+    transparent 100%
+  );
+}
+
+/* Wider reveal line variant */
+.section-reveal-line.wide {
+  height: 2px;
+}
+
+/*
+  JS Usage:
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.section-reveal-line').forEach(el => observer.observe(el));
+*/
+
+/* ========================================
+   11. HOVER SKEW - Subtle skewX on hover for interactive elements
+   ======================================== */
+
+.hover-skew {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.hover-skew:hover {
+  transform: skewX(-2deg) translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hover-skew:active {
+  transform: skewX(0deg) translateY(0);
+  transition-duration: 0.15s;
+}
+
+/* Right skew variant */
+.hover-skew.right:hover {
+  transform: skewX(2deg) translateY(-1px);
+}
+
+/* Stronger skew for buttons */
+.hover-skew.strong:hover {
+  transform: skewX(-3deg) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.hover-skew.strong.right:hover {
+  transform: skewX(3deg) translateY(-2px);
+}
+
+/* Ember-tinted shadow on hover */
+.hover-skew.ember:hover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(255, 77, 0, 0.1);
+}
+
+/* Neon-tinted shadow on hover */
+.hover-skew.neon:hover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(130, 71, 229, 0.1);
+}
+
+/* ========================================
+   12. NUMBER COUNTER - Tabular number styling for stats
+   ======================================== */
+
+.number-counter {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', var(--font-mono, monospace);
+  line-height: 1;
+}
+
+/* Large stat display variant */
+.number-counter.lg {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* Extra-large hero stat variant */
+.number-counter.xl {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+/* Small label variant */
+.number-counter.sm {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Ember-colored variant */
+.number-counter.ember {
+  color: var(--color-ember, #FF4D00);
+  text-shadow: 0 0 8px rgba(255, 77, 0, 0.2);
+}
+
+/* Neon-colored variant */
+.number-counter.neon {
+  color: var(--color-neon, #8247E5);
+  text-shadow: 0 0 8px rgba(130, 71, 229, 0.2);
+}
+
+/* Ash-colored for muted stats */
+.number-counter.ash {
+  color: var(--color-ash, #F8F9FA);
+}
+
+/* Muted variant for less important numbers */
+.number-counter.muted {
+  color: var(--color-ash-muted, #9CA3AF);
+}
+
+/* Gradient text variant for hero stats */
+.number-counter.gradient {
+  background: linear-gradient(135deg, var(--color-ember, #FF4D00), var(--color-neon, #8247E5));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================================================================
+   ROUND 7 — CSS STYLING ENHANCEMENTS
+   ================================================================ */
+
+/* ================================================================
+   1. GLASS PANEL — Refined glassmorphism container
+   ================================================================ */
+
+.glass-panel {
+  position: relative;
+  background: rgba(26, 26, 27, 0.55);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Inner border highlight — lighter along top-left edge */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 60%
+  ) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Ember glow variant */
+.glass-panel.glow-ember {
+  box-shadow:
+    0 0 30px rgba(255, 77, 0, 0.12),
+    0 0 80px rgba(255, 77, 0, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 77, 0, 0.1);
+}
+
+/* Neon glow variant */
+.glass-panel.glow-neon {
+  box-shadow:
+    0 0 30px rgba(130, 71, 229, 0.12),
+    0 0 80px rgba(130, 71, 229, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(130, 71, 229, 0.1);
+}
+
+/* ================================================================
+   2. TEXT SHIMMER — Animated highlight sweeping across text
+   ================================================================ */
+
+@keyframes text-shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-ash, #F8F9FA) 0%,
+    var(--color-ash, #F8F9FA) 35%,
+    var(--color-ember-light, #FF6A2B) 50%,
+    var(--color-ash, #F8F9FA) 65%,
+    var(--color-ash, #F8F9FA) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer-sweep 3s linear infinite;
+}
+
+/* Slow speed variant — 6s cycle */
+.text-shimmer.slow {
+  animation-duration: 6s;
+}
+
+/* Fast speed variant — 1.5s cycle */
+.text-shimmer.fast {
+  animation-duration: 1.5s;
+}
+
+/* ================================================================
+   3. ICON GLOW — Soft colored drop-shadow with hover scale
+   ================================================================ */
+
+.icon-glow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.3s ease;
+  will-change: transform, filter;
+}
+
+.icon-glow:hover {
+  transform: scale(1.12);
+}
+
+/* Ember glow variant */
+.icon-glow.icon-glow-ember {
+  filter: drop-shadow(0 0 6px rgba(255, 77, 0, 0.35))
+          drop-shadow(0 0 14px rgba(255, 77, 0, 0.15));
+}
+
+.icon-glow.icon-glow-ember:hover {
+  filter: drop-shadow(0 0 10px rgba(255, 77, 0, 0.55))
+          drop-shadow(0 0 24px rgba(255, 77, 0, 0.25));
+  transform: scale(1.12);
+}
+
+/* Neon glow variant */
+.icon-glow.icon-glow-neon {
+  filter: drop-shadow(0 0 6px rgba(130, 71, 229, 0.35))
+          drop-shadow(0 0 14px rgba(130, 71, 229, 0.15));
+}
+
+.icon-glow.icon-glow-neon:hover {
+  filter: drop-shadow(0 0 10px rgba(130, 71, 229, 0.55))
+          drop-shadow(0 0 24px rgba(130, 71, 229, 0.25));
+  transform: scale(1.12);
+}
+
+/* Green glow variant — for status/success icons */
+.icon-glow.icon-glow-green {
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.35))
+          drop-shadow(0 0 14px rgba(34, 197, 94, 0.15));
+}
+
+.icon-glow.icon-glow-green:hover {
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.55))
+          drop-shadow(0 0 24px rgba(34, 197, 94, 0.25));
+  transform: scale(1.12);
+}
+
+/* ================================================================
+   4. HOVER LIFT — Clean lift-on-hover utility
+   ================================================================ */
+
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Small lift variant — -1px */
+.hover-lift-sm {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hover-lift-sm:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Large lift variant — -6px with deeper shadow */
+.hover-lift-lg {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hover-lift-lg:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================================
+   5. BG NOISE — Subtle noise/grain texture background
+   ================================================================ */
+
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseBg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseBg)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* Heavy noise variant — doubled opacity for dramatic texture */
+.bg-noise-heavy::before {
+  opacity: 0.06;
+}
+
+/* ================================================================
+   6. FOCUS RING EMBER — Custom focus ring using box-shadow
+   ================================================================ */
+
+.focus-ring-ember {
+  outline: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.focus-ring-ember:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-charcoal, #1A1A1B),
+    0 0 0 4px var(--color-ember, #FF4D00),
+    0 0 16px rgba(255, 77, 0, 0.25);
+}
+
+/* Neon focus ring variant */
+.focus-ring-neon {
+  outline: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.focus-ring-neon:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-charcoal, #1A1A1B),
+    0 0 0 4px var(--color-neon, #8247E5),
+    0 0 16px rgba(130, 71, 229, 0.25);
+}
+
+/* ================================================================
+   7. ANIMATED BORDER BOTTOM — Gradient border shifting left-to-right
+   ================================================================ */
+
+@keyframes border-bottom-shift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.animated-border-bottom {
+  position: relative;
+  border-bottom: none;
+  padding-bottom: 3px;
+}
+
+.animated-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-ember, #FF4D00) 0%,
+    var(--color-ember-light, #FF6A2B) 20%,
+    var(--color-neon, #8247E5) 50%,
+    var(--color-ember-light, #FF6A2B) 80%,
+    var(--color-ember, #FF4D00) 100%
+  );
+  background-size: 200% 100%;
+  animation: border-bottom-shift 3s linear infinite;
+}
+
+/* ================================================================
+   8. STAT CARD — Specialized card for displaying statistics
+   ================================================================ */
+
+.stat-card {
+  position: relative;
+  background: rgba(26, 26, 27, 0.6);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Top accent line — 3px ember gradient */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-ember, #FF4D00),
+    var(--color-ember-light, #FF6A2B),
+    var(--color-neon, #8247E5)
+  );
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* Hover glow state */
+.stat-card:hover {
+  border-color: rgba(255, 77, 0, 0.15);
+  box-shadow:
+    0 0 30px rgba(255, 77, 0, 0.1),
+    0 0 60px rgba(255, 77, 0, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Large centered number area */
+.stat-card .stat-value {
+  font-family: var(--font-heading, inherit);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-ash, #F8F9FA);
+  margin: 0.5rem 0;
+}
+
+/* Label beneath the number */
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-ash-muted, #8B8B8D);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   9. TOOLTIP DARK — Dark-themed glassmorphism tooltip
+   ================================================================ */
+
+.tooltip-dark {
+  position: relative;
+  display: inline-block;
+  background: rgba(26, 26, 27, 0.85);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-ash, #F8F9FA);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 1px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Arrow variant — triangular pointer below the tooltip */
+.tooltip-dark.arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(26, 26, 27, 0.85);
+}
+
+/* Arrow variant — triangular pointer above the tooltip */
+.tooltip-dark.arrow-top::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid rgba(26, 26, 27, 0.85);
+}
+
+/* ================================================================
+   10. RESPONSIVE GRID — Breakpoint-aware grid utility
+   ================================================================ */
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* 2 columns at small breakpoint (640px) */
+@media (min-width: 640px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 columns at medium breakpoint (768px) */
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 columns at large breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Dense packing variant — uses grid-auto-flow: dense to fill gaps */
+.responsive-grid-dense {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  grid-auto-flow: dense;
+}
+
+@media (min-width: 640px) {
+  .responsive-grid-dense {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-grid-dense {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid-dense {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========================================
+   TASK 4a - CSS ENHANCEMENTS ADDITION
+   ======================================== */
+
+/* ========================================
+   1. ANIMATED GRADIENT MESH BACKGROUND
+   ======================================== */
+
+.gradient-mesh-anim {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(255,77,0,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(130,71,229,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(255,77,0,0.04) 0%, transparent 50%);
+  animation: mesh-shift 20s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-shift {
+  0% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  100% { background-position: 100% 100%, 0% 100%, 50% 0%; }
+}
+
+/* ========================================
+   2. GLASSMORPHISM ENHANCED CARD
+   ======================================== */
+
+.glass-card-enhanced {
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-enhanced:hover {
+  border-color: rgba(255, 77, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 77, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   3. ANIMATED BORDER SPIN (FULL 360deg)
+   ======================================== */
+
+.animated-border-spin {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.animated-border-spin::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, #FF4D00, #8247E5, #FF4D00);
+  animation: border-spin 4s linear infinite;
+  border-radius: inherit;
+  z-index: -1;
+}
+.animated-border-spin::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #141419;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes border-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   4. TEXT REVEAL ANIMATION
+   ======================================== */
+
+.text-reveal-up {
+  animation: text-reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+@keyframes text-reveal-up {
+  from { opacity: 0; transform: translateY(20px) rotateX(10deg); }
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+/* ========================================
+   5. NUMBER TICKER ANIMATION
+   ======================================== */
+
+.number-ticker {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  animation: ticker-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes ticker-in {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   6. HOVER CARD SPOTLIGHT EFFECT
+   ======================================== */
+
+.card-spotlight {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
+}
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,77,0,0.06), transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  border-radius: inherit;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   7. PULSE RING FOR LIVE BADGES
+   ======================================== */
+
+.pulse-ring-live {
+  position: relative;
+}
+.pulse-ring-live::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pulse-ring-live-expand 2s ease-out infinite;
+  opacity: 0;
+}
+@keyframes pulse-ring-live-expand {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ========================================
+   8. SKELETON SHIMMER FOR LOADING STATES
+   ======================================== */
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: skeleton-slide 2s infinite;
+}
+@keyframes skeleton-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* ========================================
+   9. SECTION WAVE DIVIDER
+   ======================================== */
+
+.section-wave-divider {
+  position: relative;
+}
+.section-wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40'%3E%3Cpath d='M0 40V20C200 0 400 40 600 20S1000 0 1200 20V40z' fill='%23141419'/%3E%3C/svg%3E") no-repeat center/cover;
+  pointer-events: none;
+}
+
+/* ========================================
+   10. IMPROVED CUSTOM SCROLLBAR (GRADIENT)
+   ======================================== */
+
+.scrollbar-gradient::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-gradient::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+.scrollbar-gradient::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF4D00, #8247E5);
+  border-radius: 4px;
+}
+.scrollbar-gradient::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF6A2B, #9B6EF5);
+}
+
+/* ========================================
+   TASK 4a — LANDING PAGE STYLING ENHANCEMENTS
+   ======================================== */
+
+/* ========================================
+   A. HERO SECTION ENHANCEMENTS
+   ======================================== */
+
+/* Animated gradient mesh for hero background */
+.hero-mesh-bg {
+  position: relative;
+  background: #1A1A1B;
+  overflow: hidden;
+}
+
+.hero-mesh-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(255,77,0,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(130,71,229,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 50% 100%, rgba(255,77,0,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(130,71,229,0.05) 0%, transparent 50%);
+  background-size: 200% 200%, 180% 180%, 220% 160%, 160% 200%;
+  animation: hero-mesh-drift 25s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes hero-mesh-drift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 90% 80%;
+  }
+  33% {
+    background-position: 50% 20%, 60% 40%, 20% 60%, 40% 20%;
+  }
+  66% {
+    background-position: 100% 60%, 20% 80%, 80% 20%, 10% 60%;
+  }
+  100% {
+    background-position: 30% 100%, 80% 60%, 40% 80%, 70% 40%;
+  }
+}
+
+/* Particle-like noise texture overlay for hero */
+.hero-noise-overlay {
+  position: relative;
+}
+
+.hero-noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* Subtle animated border glow for hero CTA button */
+.hero-cta-glow {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+.hero-cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,77,0,0.4) 0%,
+    rgba(130,71,229,0.3) 30%,
+    rgba(255,106,43,0.2) 60%,
+    rgba(255,77,0,0.4) 100%
+  );
+  background-size: 300% 300%;
+  animation: cta-border-cycle 4s ease-in-out infinite;
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hero-cta-glow:hover::before {
+  opacity: 1;
+}
+
+.hero-cta-glow:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 8px 30px rgba(255,77,0,0.3),
+    0 0 60px rgba(255,77,0,0.1);
+}
+
+@keyframes cta-border-cycle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================================
+   B. CARD STYLING ENHANCEMENTS
+   ======================================== */
+
+/* 3D tilt effect on hover with perspective */
+.card-3d-tilt {
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.card-3d-tilt > * {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d-tilt:hover > * {
+  transform: rotateX(3deg) rotateY(-3deg) translateZ(12px);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(255, 77, 0, 0.06),
+    -5px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-3d-tilt:active > * {
+  transform: rotateX(1deg) rotateY(-1deg) translateZ(6px);
+  transition-duration: 0.15s;
+}
+
+/* Shimmer loading animation for placeholder content */
+.shimmer-loading {
+  position: relative;
+  overflow: hidden;
+  background: rgba(34, 34, 36, 0.4);
+  border-radius: 0.5rem;
+}
+
+.shimmer-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 77, 0, 0.06) 45%,
+    rgba(255, 77, 0, 0.14) 50%,
+    rgba(255, 77, 0, 0.06) 55%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: shimmer-loading-sweep 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer-loading-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Neon shimmer variant */
+.shimmer-loading.neon::after {
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(130, 71, 229, 0.06) 45%,
+    rgba(130, 71, 229, 0.14) 50%,
+    rgba(130, 71, 229, 0.06) 55%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+}
+
+/* Animated gradient border glow on cards */
+.glow-border-animated {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow-border-animated::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    var(--glow-angle, 0deg),
+    #FF4D00 0%,
+    #FF6A2B 20%,
+    #8247E5 40%,
+    #9B6EF5 60%,
+    #8247E5 80%,
+    #FF4D00 100%
+  );
+  background-size: 100% 100%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.glow-border-animated:hover::before {
+  opacity: 1;
+  animation: glow-border-rotate 3s linear infinite;
+}
+
+@keyframes glow-border-rotate {
+  0% { --glow-angle: 0deg; }
+  100% { --glow-angle: 360deg; }
+}
+
+/* Fallback for browsers without @property support */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .glow-border-animated:hover::before {
+    background: linear-gradient(135deg, #FF4D00, #8247E5, #FF6A2B, #9B6EF5);
+    background-size: 300% 300%;
+    animation: gradient-shift 3s ease infinite;
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   C. SECTION TRANSITIONS
+   ======================================== */
+
+/* Staggered fade-in for section content */
+.section-fade-in > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-fade-in.in-view > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(7) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(8) { transition-delay: 700ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(9) { transition-delay: 800ms; opacity: 1; transform: translateY(0); }
+.section-fade-in.in-view > *:nth-child(10) { transition-delay: 900ms; opacity: 1; transform: translateY(0); }
+
+/* Faster stagger variant */
+.section-fade-in.fast.in-view > *:nth-child(1) { transition-delay: 0ms; }
+.section-fade-in.fast.in-view > *:nth-child(2) { transition-delay: 60ms; }
+.section-fade-in.fast.in-view > *:nth-child(3) { transition-delay: 120ms; }
+.section-fade-in.fast.in-view > *:nth-child(4) { transition-delay: 180ms; }
+.section-fade-in.fast.in-view > *:nth-child(5) { transition-delay: 240ms; }
+.section-fade-in.fast.in-view > *:nth-child(6) { transition-delay: 300ms; }
+
+/* Wave SVG divider between sections */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wave-divider.ember path {
+  fill: #1A1A1B;
+}
+
+.wave-divider.neon path {
+  fill: #1A1A1B;
+}
+
+.wave-divider.gradient path {
+  fill: url(#wave-gradient-fill);
+}
+
+/* Simple CSS-only wave divider */
+.wave-divider-css {
+  position: relative;
+  height: 60px;
+  background: transparent;
+}
+
+.wave-divider-css::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 60px;
+  background:
+    radial-gradient(ellipse 50% 100% at 10% 0%, #1A1A1B 48%, transparent 50%),
+    radial-gradient(ellipse 50% 100% at 30% 0%, #222224 48%, transparent 50%),
+    radial-gradient(ellipse 50% 100% at 50% 0%, #1A1A1B 48%, transparent 50%),
+    radial-gradient(ellipse 50% 100% at 70% 0%, #222224 48%, transparent 50%),
+    radial-gradient(ellipse 50% 100% at 90% 0%, #1A1A1B 48%, transparent 50%);
+  z-index: 1;
+}
+
+/* ========================================
+   D. TYPOGRAPHY ENHANCEMENTS
+   ======================================== */
+
+/* Text with slowly cycling gradient colors */
+.text-gradient-animated {
+  background: linear-gradient(
+    135deg,
+    #FF4D00 0%,
+    #FF6A2B 15%,
+    #8247E5 30%,
+    #9B6EF5 45%,
+    #FFB088 55%,
+    #FF6A2B 70%,
+    #FF4D00 85%,
+    #CC3D00 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient-cycle 8s ease infinite;
+}
+
+@keyframes text-gradient-cycle {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neon-only animated gradient text */
+.text-gradient-animated.neon {
+  background: linear-gradient(
+    135deg,
+    #8247E5 0%,
+    #9B6EF5 20%,
+    #C4A8FF 40%,
+    #8247E5 60%,
+    #6A35C0 80%,
+    #9B6EF5 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ember-only animated gradient text */
+.text-gradient-animated.ember {
+  background: linear-gradient(
+    135deg,
+    #FF4D00 0%,
+    #FF6A2B 20%,
+    #FFB088 40%,
+    #FFD700 50%,
+    #FFB088 60%,
+    #FF6A2B 80%,
+    #CC3D00 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text with subtle glow effect */
+.text-shadow-glow {
+  text-shadow:
+    0 0 8px rgba(255, 77, 0, 0.3),
+    0 0 20px rgba(255, 77, 0, 0.12);
+}
+
+.text-shadow-glow.neon {
+  text-shadow:
+    0 0 8px rgba(130, 71, 229, 0.3),
+    0 0 20px rgba(130, 71, 229, 0.12);
+}
+
+/* Stronger glow variant */
+.text-shadow-glow.strong {
+  text-shadow:
+    0 0 12px rgba(255, 77, 0, 0.5),
+    0 0 30px rgba(255, 77, 0, 0.2),
+    0 0 60px rgba(255, 77, 0, 0.08);
+}
+
+.text-shadow-glow.strong.neon {
+  text-shadow:
+    0 0 12px rgba(130, 71, 229, 0.5),
+    0 0 30px rgba(130, 71, 229, 0.2),
+    0 0 60px rgba(130, 71, 229, 0.08);
+}
+
+/* ========================================
+   E. BUTTON ENHANCEMENTS
+   ======================================== */
+
+/* Glossy shine effect on buttons */
+.btn-glossy {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glossy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 80%
+  );
+  transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-glossy:hover::before {
+  left: 120%;
+}
+
+/* Ember-tinted glossy variant */
+.btn-glossy.ember::before {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 200, 150, 0.12) 45%,
+    rgba(255, 200, 150, 0.22) 50%,
+    rgba(255, 200, 150, 0.12) 55%,
+    transparent 80%
+  );
+}
+
+/* Expanding pulse ring effect for buttons */
+.btn-pulse-ring {
+  position: relative;
+  overflow: visible;
+}
+
+.btn-pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid rgba(255, 77, 0, 0.6);
+  animation: btn-ring-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-pulse-ring:hover::after {
+  opacity: 1;
+}
+
+@keyframes btn-ring-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  80%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Neon pulse ring variant */
+.btn-pulse-ring.neon::after {
+  border-color: rgba(130, 71, 229, 0.6);
+}
+
+/* Green pulse ring variant */
+.btn-pulse-ring.green::after {
+  border-color: rgba(34, 197, 94, 0.6);
+}
+
+/* ========================================
+   F. SCROLL & REVEAL EFFECTS
+   ======================================== */
+
+/* CSS-only scroll reveal using animation-timeline */
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: reveal-scroll-fade 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 30%;
+  }
+
+  @keyframes reveal-scroll-fade {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Staggered reveal using nth-child */
+  .reveal-on-scroll.stagger > *:nth-child(1) { animation-range: entry 2% entry 22%; }
+  .reveal-on-scroll.stagger > *:nth-child(2) { animation-range: entry 5% entry 28%; }
+  .reveal-on-scroll.stagger > *:nth-child(3) { animation-range: entry 8% entry 34%; }
+  .reveal-on-scroll.stagger > *:nth-child(4) { animation-range: entry 11% entry 40%; }
+  .reveal-on-scroll.stagger > *:nth-child(5) { animation-range: entry 14% entry 46%; }
+
+  /* Slide from left */
+  .reveal-on-scroll.slide-left {
+    transform: translateX(-30px) translateY(0);
+  }
+
+  @keyframes reveal-scroll-left {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .reveal-on-scroll.slide-left {
+    animation-name: reveal-scroll-left;
+  }
+
+  /* Scale-in reveal */
+  .reveal-on-scroll.scale-in {
+    transform: scale(0.9);
+  }
+
+  @keyframes reveal-scroll-scale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .reveal-on-scroll.scale-in {
+    animation-name: reveal-scroll-scale;
+  }
+}
+
+/* Fallback for browsers without animation-timeline support */
+@supports not (animation-timeline: view()) {
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-on-scroll.slide-left {
+    transform: translateX(-30px);
+  }
+
+  .reveal-on-scroll.slide-left.in-view {
+    transform: translateX(0);
+  }
+
+  .reveal-on-scroll.scale-in {
+    transform: scale(0.9);
+  }
+
+  .reveal-on-scroll.scale-in.in-view {
+    transform: scale(1);
+  }
+}
+
+/* Parallax effects (CSS-only with CSS scroll-driven animations) */
+@supports (animation-timeline: view()) {
+  .parallax-slow {
+    animation: parallax-shift-slow linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 0%;
+  }
+
+  @keyframes parallax-shift-slow {
+    from { transform: translateY(0); }
+    to { transform: translateY(-40px); }
+  }
+
+  .parallax-fast {
+    animation: parallax-shift-fast linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 0%;
+  }
+
+  @keyframes parallax-shift-fast {
+    from { transform: translateY(0); }
+    to { transform: translateY(-80px); }
+  }
+}
+
+/* Fallback: JS-driven parallax using CSS custom properties */
+.parallax-slow,
+.parallax-fast {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ========================================
+   G. RESPONSIVE POLISH
+   ======================================== */
+
+/* Improved scrollbar with custom class */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #333335 rgba(26, 26, 27, 0.8);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(26, 26, 27, 0.6);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3a3a3d 0%, #2d2d2f 100%);
+  border-radius: 4px;
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF4D00 0%, #CC3D00 100%);
+  background-clip: padding-box;
+  box-shadow: 0 0 8px rgba(255, 77, 0, 0.25);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #FF6A2B 0%, #FF4D00 100%);
+  background-clip: padding-box;
+  box-shadow: 0 0 12px rgba(255, 77, 0, 0.4);
+}
+
+/* Corner radius for scrollbar track */
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+/* Glass morphism strong variant */
+.glass-morphism-strong {
+  background: rgba(26, 26, 27, 0.65);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Inner edge highlight */
+.glass-morphism-strong::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ember-tinted strong glass */
+.glass-morphism-strong.ember {
+  border-color: rgba(255, 77, 0, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 77, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-morphism-strong.ember::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 77, 0, 0.06) 0%,
+    rgba(255, 77, 0, 0.02) 40%,
+    transparent 60%
+  );
+}
+
+/* Neon-tinted strong glass */
+.glass-morphism-strong.neon {
+  border-color: rgba(130, 71, 229, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(130, 71, 229, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-morphism-strong.neon::before {
+  background: linear-gradient(
+    135deg,
+    rgba(130, 71, 229, 0.06) 0%,
+    rgba(130, 71, 229, 0.02) 40%,
+    transparent 60%
+  );
+}
+
+/* ========================================
+   END TASK 4a ENHANCEMENTS
+   ======================================== */
