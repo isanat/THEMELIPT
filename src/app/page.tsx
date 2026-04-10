@@ -7,7 +7,6 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +29,6 @@ import {
   Lock,
   Coins,
   Wallet,
-  ArrowDownLeft,
   BarChart3,
   PieChart,
   ChevronRight,
@@ -49,29 +47,21 @@ import {
   Hexagon,
   ShieldCheck,
   Database,
-  Mail,
   CheckCircle2,
   XCircle,
   X,
   Send,
   AlertTriangle,
   Globe,
-  MessageCircle,
-  ArrowUpCircle,
   Crown,
   Code2,
-
-  Award,
   Blocks,
   Fingerprint,
-  BookOpen,
-  FileCheck,
   Landmark,
   Cpu,
   Network,
   ChevronUp,
   Settings,
-  Clock,
 } from 'lucide-react';
 import {
   Table,
@@ -1021,117 +1011,6 @@ function DonutChart({ data }: { data: { name: string; value: number; color: stri
 }
 
 /* ================================================================
-   SWAP CALCULATOR COMPONENT
-   ================================================================ */
-
-function SwapCalculator({ onConnectWallet, liveStats }: { onConnectWallet: () => void; liveStats?: { price?: string } | null }) {
-  const [usdtAmount, setUsdtAmount] = useState<string>('100');
-  const price = liveStats?.price ? parseFloat(liveStats.price) : DEFAULT_STATS.liptPrice;
-  const burnRate = DEFAULT_STATS.burnRate;
-
-  const calculate = useCallback(() => {
-    const usdt = parseFloat(usdtAmount) || 0;
-    const liptBeforeBurn = usdt / price;
-    const burned = liptBeforeBurn * burnRate;
-    const liptReceived = liptBeforeBurn - burned;
-    return { liptBeforeBurn, burned, liptReceived };
-  }, [usdtAmount, price]);
-
-  const result = calculate();
-
-  return (
-    <Card className="gradient-border-ember bg-charcoal-light/80 backdrop-blur-xl overflow-hidden">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xl font-heading text-ember flex items-center gap-2">
-          <Zap className="w-5 h-5" />
-          Calculadora de Swap
-        </CardTitle>
-        <CardDescription className="text-ash-muted">
-          Simule suas trocas USDT → LIPT com taxa de queima
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* USDT Input */}
-        <div className="space-y-2">
-          <label className="text-sm text-ash-muted font-medium">Você envia</label>
-          <div className="relative">
-            <Input
-              type="number"
-              value={usdtAmount}
-              onChange={(e) => setUsdtAmount(e.target.value)}
-              className="bg-charcoal border-charcoal-lighter text-ash text-lg font-semibold pr-16 h-14 focus:border-ember focus:ring-ember/20"
-              placeholder="0.00"
-              min="0"
-              step="0.01"
-            />
-            <Badge className="absolute right-3 top-1/2 -translate-y-1/2 bg-emerald-600/20 text-emerald-400 border-emerald-600/30 text-sm px-3 py-1">
-              USDT
-            </Badge>
-          </div>
-        </div>
-
-        {/* Arrow */}
-        <div className="flex justify-center">
-          <div className="w-10 h-10 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center animate-float">
-            <ArrowDownLeft className="w-5 h-5 text-ember" />
-          </div>
-        </div>
-
-        {/* LIPT Output */}
-        <div className="space-y-2">
-          <label className="text-sm text-ash-muted font-medium">Você recebe (estimativa)</label>
-          <div className="relative bg-charcoal rounded-lg border border-charcoal-lighter p-4 h-14 flex items-center">
-            <span className="text-lg font-bold text-ember">
-              {result.liptReceived > 0
-                ? result.liptReceived.toLocaleString('pt-BR', { maximumFractionDigits: 2 })
-                : '0'}
-            </span>
-            <Badge className="ml-auto bg-ember/20 text-ember border-ember/30 text-sm px-3 py-1">
-              LIPT
-            </Badge>
-          </div>
-        </div>
-
-        <Separator className="bg-charcoal-lighter" />
-
-        {/* Details */}
-        <div className="space-y-3 text-sm">
-          <div className="flex justify-between text-ash-muted">
-            <span>Preço LIPT</span>
-            <span className="text-ash font-medium">${price.toFixed(6)}</span>
-          </div>
-          <div className="flex justify-between text-ash-muted">
-            <span>LIPT antes da queima</span>
-            <span className="text-ash font-medium">
-              {result.liptBeforeBurn.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-            </span>
-          </div>
-          <div className="flex justify-between text-ash-muted">
-            <span>Taxa de queima (2%)</span>
-            <span className="text-red-400 font-medium">
-              -{result.burned.toLocaleString('pt-BR', { maximumFractionDigits: 2 })} LIPT
-            </span>
-          </div>
-          <Separator className="bg-charcoal-lighter" />
-          <div className="flex justify-between font-semibold">
-            <span className="text-ash">LIPT líquido</span>
-            <span className="text-ember">
-              {result.liptReceived.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-            </span>
-          </div>
-        </div>
-      </CardContent>
-      <CardFooter className="pt-4">
-        <Button className="w-full bg-ember hover:bg-ember-light text-white font-semibold h-12 text-base transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,77,0,0.3)]" onClick={onConnectWallet}>
-            Conectar Carteira & Swap
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-      </CardFooter>
-    </Card>
-  );
-}
-
-/* ================================================================
    LIPT LOGO SVG COMPONENT
    ================================================================ */
 
@@ -1845,109 +1724,6 @@ function CookieConsentBanner() {
         </div>
       </div>
     </div>
-  );
-}
-
-/* ================================================================
-   NEWSLETTER SECTION COMPONENT
-   ================================================================ */
-
-function NewsletterSection() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 4000);
-    }
-  };
-
-  return (
-    <section id="newsletter" className="relative py-20 sm:py-28 px-4">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
-
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-ember/5 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="max-w-2xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-ember/10 border border-ember/30 mb-6">
-            <Mail className="w-7 h-7 text-ember" />
-          </div>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-ash mb-4">
-            Fique por Dentro do{' '}
-            <span className="bg-gradient-to-r from-ember to-ember-light bg-clip-text text-transparent text-glow-ember">
-              Fogo
-            </span>
-          </h2>
-          <p className="text-ash-muted text-lg max-w-xl mx-auto">
-            Receba atualizações exclusivas, análises de mercado e novidades do protocolo diretamente no seu email.
-          </p>
-        </div>
-
-        {/* Newsletter Card */}
-        <Card className="gradient-border-ember bg-charcoal-light/80 backdrop-blur-xl overflow-hidden">
-          <CardContent className="p-6 sm:p-8">
-            <form onSubmit={handleSubscribe} className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu@email.com"
-                  className="bg-charcoal border-charcoal-lighter text-ash placeholder:text-ash-muted/60 focus:border-ember focus:ring-ember/20 h-12 flex-1"
-                  required
-                />
-                <Button
-                  type="submit"
-                  disabled={subscribed}
-                  className="bg-ember hover:bg-ember-light text-white font-semibold h-12 px-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,77,0,0.3)] disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
-                >
-                  {subscribed ? (
-                    <>
-                      <Check className="w-4 h-4 mr-2" />
-                      Inscrito!
-                    </>
-                  ) : (
-                    <>
-                      <Mail className="w-4 h-4 mr-2" />
-                      Inscrever-se
-                    </>
-                  )}
-                </Button>
-              </div>
-              <p className="text-xs text-ash-muted text-center">
-                Sem spam. Cancele a qualquer momento.
-              </p>
-            </form>
-
-            {/* Stat Badges */}
-            <div className="flex flex-wrap justify-center gap-4 mt-6 pt-6 border-t border-charcoal-lighter/50">
-              {[
-                { icon: Users, value: '2.4K', label: 'Inscritos' },
-                { icon: Mail, value: '3', label: 'Emails/Semana' },
-                { icon: Activity, value: '98%', label: 'Taxa de Abertura' },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-charcoal-light/60 border border-charcoal-lighter/40"
-                >
-                  <stat.icon className="w-3.5 h-3.5 text-ember" />
-                  <span className="text-sm font-semibold text-ash">{stat.value}</span>
-                  <span className="text-xs text-ash-muted">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
   );
 }
 
@@ -2683,91 +2459,6 @@ function LiquidityPoolCard({ onConnectWallet }: { onConnectWallet: () => void })
 }
 
 /* ================================================================
-   FEATURE 2: ACTIVITY HEATMAP
-   ================================================================ */
-
-function ActivityHeatmap() {
-  const days = useMemo(() => ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], []);
-  const periods = useMemo(() => ['00-06h', '06-12h', '12-18h', '18-24h'], []);
-
-  const heatmapData = useState<number[][]>(() => {
-    const data: number[][] = [];
-    for (let d = 0; d < 7; d++) {
-      const row: number[] = [];
-      for (let p = 0; p < 4; p++) {
-        row.push(Math.floor(Math.random() * 120));
-      }
-      data.push(row);
-    }
-    return data;
-  })[0];
-
-  const getColor = (value: number): string => {
-    if (value < 15) return 'bg-charcoal-lighter/30';
-    if (value < 35) return 'bg-ember/10';
-    if (value < 60) return 'bg-ember/30';
-    if (value < 85) return 'bg-ember/60';
-    return 'bg-ember/90';
-  };
-
-  return (
-    <AnimatedSection>
-      <div className="glass-dark rounded-2xl border border-charcoal-lighter/50 overflow-hidden p-6">
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-10 h-10 rounded-xl bg-ember/10 border border-ember/20 flex items-center justify-center">
-            <BarChart3 className="w-5 h-5 text-ember" />
-          </div>
-          <div>
-            <h3 className="font-heading text-lg font-bold text-ash">Mapa de Atividade</h3>
-            <p className="text-xs text-ash-muted">Últimos 7 dias</p>
-          </div>
-        </div>
-
-        {/* Period labels top row */}
-        <div className="flex gap-1.5 mb-1.5 pl-10">
-          {periods.map((period) => (
-            <div key={period} className="flex-1 text-center">
-              <span className="text-[10px] text-ash-muted">{period}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Heatmap grid */}
-        <div className="space-y-1.5">
-          {days.map((day, dIdx) => (
-            <div key={day} className="flex items-center gap-1.5">
-              <span className="text-xs text-ash-muted w-10 text-right pr-1">{day}</span>
-              {heatmapData[dIdx].map((value, pIdx) => (
-                <div
-                  key={`${dIdx}-${pIdx}`}
-                  title={`${value} transações`}
-                  className={cn(
-                    'flex-1 aspect-square rounded-md transition-all duration-200 cursor-pointer',
-                    getColor(value),
-                    'hover:ring-2 hover:ring-ember/50 hover:scale-110'
-                  )}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Legend */}
-        <div className="flex items-center justify-end gap-2 mt-4">
-          <span className="text-[10px] text-ash-muted">Menos</span>
-          <div className="w-3 h-3 rounded-sm bg-charcoal-lighter/30" />
-          <div className="w-3 h-3 rounded-sm bg-ember/10" />
-          <div className="w-3 h-3 rounded-sm bg-ember/30" />
-          <div className="w-3 h-3 rounded-sm bg-ember/60" />
-          <div className="w-3 h-3 rounded-sm bg-ember/90" />
-          <span className="text-[10px] text-ash-muted">Mais</span>
-        </div>
-      </div>
-    </AnimatedSection>
-  );
-}
-
-/* ================================================================
    FEATURE 3: TOP HOLDERS LIST
    ================================================================ */
 
@@ -3162,96 +2853,6 @@ function NetworkStatusWidget({ onChainData }: { onChainData?: OnChainData | null
         </div>
       </div>
     </div>
-  );
-}
-
-/* ================================================================
-   EARNINGS CALCULATOR
-   ================================================================ */
-
-function EarningsCalculator({ onConnectWallet }: { onConnectWallet: () => void }) {
-  const [liptAmount, setLiptAmount] = useState('10000');
-  const [stakeDuration, setStakeDuration] = useState(30);
-  const apy = 42;
-  const pricePerLipt = 0.000595;
-
-  const calculate = useCallback(() => {
-    const lipt = parseFloat(liptAmount) || 0;
-    const months = stakeDuration;
-    // Compound interest: A = P(1 + r/n)^(nt) where r = 0.42, n = 12, t = months/12
-    const monthlyRate = apy / 100 / 12;
-    const totalLipt = lipt * Math.pow(1 + monthlyRate, months);
-    const earned = totalLipt - lipt;
-    const earnedUsd = earned * pricePerLipt;
-    const multiplier = 1 + (months > 90 ? 0.5 : months > 30 ? 0.2 : 0);
-    const effectiveApy = apy * multiplier;
-
-    return { totalLipt, earned, earnedUsd, multiplier, effectiveApy };
-  }, [liptAmount, stakeDuration]);
-
-  const result = calculate();
-
-  return (
-    <Card className="glass-card-enhanced overflow-hidden">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg font-heading text-[#8247E5] flex items-center gap-2">
-          <TrendingUp className="w-5 h-5" />
-          Calculadora de Rendimento
-        </CardTitle>
-        <CardDescription className="text-ash-muted text-sm">
-          Simule seus ganhos no The Vault
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <label className="text-sm text-ash-muted font-medium">Quantidade de LIPT</label>
-          <div className="relative">
-            <Input type="number" value={liptAmount} onChange={(e) => setLiptAmount(e.target.value)}
-              className="bg-charcoal border-charcoal-lighter text-ash text-base font-semibold pr-16 h-12 focus:border-[#8247E5] focus:ring-[#8247E5]/20"
-              placeholder="0" min="0" />
-            <Badge className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#8247E5]/20 text-[#8247E5] border-[#8247E5]/30 text-sm px-3 py-1">LIPT</Badge>
-          </div>
-        </div>
-        <div className="space-y-2">
-          <div className="flex justify-between">
-            <label className="text-sm text-ash-muted font-medium">Período</label>
-            <span className="text-sm text-[#8247E5] font-semibold">{stakeDuration} dias</span>
-          </div>
-          <div className="flex gap-2">
-            {[7, 30, 90, 180, 365].map(d => (
-              <button key={d} onClick={() => setStakeDuration(d)}
-                className={cn("flex-1 py-2 rounded-lg text-xs font-semibold transition-all",
-                  stakeDuration === d ? "bg-[#8247E5] text-white" : "bg-charcoal-light text-ash-muted hover:text-ash hover:bg-charcoal-lighter/50")}>
-                {d}d
-              </button>
-            ))}
-          </div>
-        </div>
-        <Separator className="bg-charcoal-lighter" />
-        <div className="grid grid-cols-2 gap-3">
-          <div className="glass-dark rounded-lg p-3 text-center">
-            <p className="text-xs text-ash-muted mb-1">Rendimento</p>
-            <p className="text-lg font-bold text-[#8247E5]">+{result.earned.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</p>
-            <p className="text-xs text-ash-muted">LIPT</p>
-          </div>
-          <div className="glass-dark rounded-lg p-3 text-center">
-            <p className="text-xs text-ash-muted mb-1">Em USD</p>
-            <p className="text-lg font-bold text-emerald-400">${result.earnedUsd.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</p>
-            <p className="text-xs text-ash-muted">estimado</p>
-          </div>
-        </div>
-        {result.multiplier > 1 && (
-          <div className="text-center text-xs text-ember bg-ember/10 rounded-lg py-2 px-3 border border-ember/20">
-            Multiplicador de {result.multiplier}x ativo! APY efetivo: {result.effectiveApy}%
-          </div>
-        )}
-      </CardContent>
-      <CardFooter className="pt-2">
-        <Button className="w-full bg-[#8247E5] hover:bg-[#9B6EF5] text-white font-semibold h-11" onClick={onConnectWallet}>
-          Stake Agora <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
-      </CardFooter>
-    </Card>
   );
 }
 
