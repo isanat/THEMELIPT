@@ -4039,9 +4039,6 @@ export default function Home() {
           ============================================================== */}
       <ComparisonTable />
 
-      {/* ActivityHeatmap - After ComparisonTable */}
-      <ActivityHeatmap />
-
       <AnimatedSection>
       {/* ==============================================================
           PRICE CHART
@@ -4173,9 +4170,9 @@ export default function Home() {
 
       <AnimatedSection delay={100}>
       {/* ==============================================================
-          SECTION 7: SWAP CALCULATOR
+          SECTION 7: TOOLS & FEATURES
           ============================================================== */}
-      <section id="burn-engine" className="relative py-20 sm:py-28 px-4">
+      <section id="tools" className="relative py-20 sm:py-28 px-4">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
 
         <div className="max-w-md mx-auto relative z-10">
@@ -4183,37 +4180,31 @@ export default function Home() {
           <div className="text-center mb-10">
             <Badge variant="outline" className="border-ember/30 text-ember mb-4 px-4 py-1.5 text-sm">
               <Zap className="w-3.5 h-3.5 mr-1.5" />
-              Simulador
+              Ferramentas
             </Badge>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ash mb-4">
-              Calculadora de{' '}
+              Recursos do{' '}
               <span className="bg-gradient-to-r from-ember to-neon bg-clip-text text-transparent">
-                Swap
+                Protocolo
               </span>
             </h2>
             <p className="text-ash-muted text-base">
-              Simule suas trocas antes de executar na rede.
+              Acompanhe o protocolo em tempo real.
             </p>
           </div>
 
-          <SwapCalculator onConnectWallet={() => launchDialog.setOpen(true)} liveStats={liveStats} />
           <div className="mt-8">
             <ReferralCard />
           </div>
 
-          {/* FEATURE 5: PRICE ALERT FORM (after swap calculator) */}
+          {/* FEATURE 5: PRICE ALERT FORM */}
           <div className="mt-8">
             <PriceAlertForm />
           </div>
 
-          {/* GasTracker - After Swap Calculator */}
+          {/* GasTracker */}
           <div className="mt-8">
             <GasTracker />
-          </div>
-
-          {/* Earnings Calculator - After GasTracker */}
-          <div className="mt-8">
-            <EarningsCalculator onConnectWallet={() => launchDialog.setOpen(true)} />
           </div>
         </div>
       </section>
@@ -4351,15 +4342,8 @@ export default function Home() {
       <CommunitySection />
       </AnimatedSection>
 
-      {/* TeamSection - Between Community and Newsletter */}
+      {/* TeamSection - Between Community and Trust */}
       <TeamSection />
-
-      <AnimatedSection>
-      {/* ==============================================================
-          NEWSLETTER SECTION
-          ============================================================== */}
-      <NewsletterSection />
-      </AnimatedSection>
 
       <AnimatedSection>
       {/* ==============================================================
@@ -4484,7 +4468,6 @@ export default function Home() {
                     { name: 'The Forge (Mining)', href: '#ecossistema' },
                     { name: 'The Vault (Staking)', href: '#ecossistema' },
                     { name: 'BurnEngine', href: '#ecossistema' },
-                    { name: 'Calculadora de Swap', href: '#' },
                     { name: 'Documentação', href: '#' },
                     { name: 'Auditoria CertiK', href: '#' },
                   ].map((link) => (
@@ -4509,7 +4492,6 @@ export default function Home() {
                     { name: 'Whitepaper', href: '#' },
                     { name: 'Roadmap', href: '#' },
                     { name: 'FAQ', href: '#faq' },
-                    { name: 'Newsletter', href: '#newsletter' },
                     { name: 'Contrato Inteligente', href: '#' },
                     { name: 'Status da Rede', href: '#' },
                   ].map((link) => (
